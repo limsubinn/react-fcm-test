@@ -51,7 +51,7 @@ const saveToken = async (token) => {
   try {
     console.log("토큰 저장 요청");
     
-    const response = await fetch(`${baseUrl}/api/notification`, {
+    const response = await fetch(`${baseUrl}/api/notifications`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
