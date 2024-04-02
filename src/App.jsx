@@ -23,7 +23,6 @@ const messaging = getMessaging(firebaseApp);
 Notification.requestPermission().then((permission) => {
     if (permission === 'granted') {
       console.log('Notification permission granted.');
-      getFcmToken();
     }
     else {
       console.log('not granted');
@@ -31,7 +30,7 @@ Notification.requestPermission().then((permission) => {
   });
 
 // 토큰 요청
-const getFcmToken = getToken(messaging, { vapidKey: `${vapidKey}` }).then((currentToken) => {
+getToken(messaging, { vapidKey: `${vapidKey}` }).then((currentToken) => {
   if (currentToken) {
     console.log(currentToken);
     saveToken(currentToken);
