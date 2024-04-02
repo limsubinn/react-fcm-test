@@ -40,4 +40,19 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+
+  <!-- 서비스 워커 등록 -->
+  <script>
+     if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/firebase-messaging-sw.js')
+          .then(function(registration) {
+            console.log('서비스 워커 등록 성공:', registration);
+          })
+          .catch(function(error) {
+            console.error('서비스 워커 등록 실패:', error);
+          });
+      });
+    }
+  </script>
 </html>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { initializeApp } from 'firebase/app';
-import { getMessaging, getToken } from 'firebase/messaging';
+import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 
 const baseUrl = process.env.REACT_APP_API_SERVER_URL;
 const vapidKey = process.env.REACT_APP_FCM_VAPID_KEY;
@@ -66,6 +66,12 @@ const saveToken = async (token) => {
     console.error('POST 요청 중 에러 발생:', error);
   }
 };
+
+onMessage(messaging, (payload) => {
+  console.log('Message received. ', payload);
+  alert(payload.notification.body);
+  // ...
+});
 
 function App() {
   return (
